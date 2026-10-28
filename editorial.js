@@ -6,63 +6,69 @@ const viewer=document.querySelector('#image-viewer');
 // A single reading sequence interleaves all three source layers.
 const streamOrder=[[1,0],[2,0],[3,0],[1,1],[3,1],[2,1],[3,2],[1,2],[2,2],[3,3],[2,3],[1,3],[3,4],[1,4],[3,5],[2,4],[3,6],[1,5],[3,9],[2,5],[3,7],[1,6],[3,10],[2,6],[3,8]];
 const streamRank=new Map(streamOrder.map(([g,i],rank)=>[`${g}:${i}`,rank]));
-// Five art-directed spreads, with quiet depth rather than competing scroll speeds.
-function speedFor(group){return {1:.97,2:1,3:1.03}[group];}
-let compositions=[];
-const desktopSpreads=[
- [[6,29,.02,-.6],[39,23,.16,.8],[69,24,.05,-.7],[13,25,.45,.5],[48,31,.52,-.4]],
- [[6,22,.02,.7],[30,34,.12,-.5],[72,22,.09,.6],[12,25,.53,-.8],[57,28,.57,.4]],
- [[7,30,.03,-.5],[44,24,.02,.6],[70,24,.31,-.4],[15,28,.48,.7],[47,32,.58,-.6]],
- [[5,25,.03,.6],[36,32,.15,-.4],[73,22,.04,.5],[12,7,.42,-.2],[35,57,.65,.3]],
- [[6,28,.02,-.6],[40,29,.17,.5],[82,7,.04,.2],[9,60,.69,-.3],[62,27,.46,.6]]
-];
-const mobileSpreads=[
- [[5,47,.02,-.5],[52,43,.17,.6],[8,43,.47,-.4],[48,45,.62,.5],[19,60,.99,-.3]],
- [[5,43,.01,.5],[42,53,.22,-.4],[7,44,.61,.5],[51,44,.73,-.4],[14,64,1.12,.3]],
- [[5,48,.02,-.5],[53,42,.19,.4],[6,45,.53,-.4],[47,48,.72,.5],[15,65,1.1,-.4]],
- [[5,45,.02,.5],[46,49,.18,-.4],[7,43,.59,.5],[80,10,.58,-.2],[8,74,1.12,.2]],
- [[5,47,.02,-.5],[48,46,.24,.4],[83,10,.01,.2],[6,76,.91,-.2],[44,49,1.12,.4]]
-];
+// Scroll-driven contact sheets: three seamless, independently moving image bands.
+let bands=[],galleryStage=null;
+function ensureStage(){
+ if(galleryStage)return;
+ galleryStage=document.createElement('div');galleryStage.className='gallery-stage';
+ for(const layer of field.querySelectorAll('.parallax-layer'))galleryStage.appendChild(layer);
+ field.appendChild(galleryStage);
+ const hint=document.createElement('div');hint.className='gallery-motion-hint';
+ hint.innerHTML='<span>向下捲動 · 圖像橫向流動</span><span>SCROLL TO EXPLORE →</span>';
+ galleryStage.appendChild(hint);
+}
 function layout(){
- if(!field)return;
- const mobile=innerWidth<=780,unit=innerWidth*(mobile?.94:.7);
- field.classList.toggle('is-static',reduced.matches);compositions=[];
- let cursor=mobile?35:65;
- const plans=mobile?mobileSpreads:desktopSpreads;
- for(let spread=0;spread<5;spread++){
-  const entries=items.slice(spread*5,spread*5+5),plan=plans[spread];let end=0;const placed=[];
-  entries.forEach((entry,i)=>{
-   const [x,w,y,angle]=plan[i],ribbon=entry.aspect<.2,card=entry.element;
-   const width=Math.min(entry.sourceWidth||entry.width,innerWidth*w/100),height=width/entry.aspect;
-   let top=cursor+y*unit;const left=innerWidth*x/100;
-   // Preserve the composed position unless it hides too much of another image.
-   const candidate={left,top,width,height};
-   const intersection=(a,b)=>Math.max(0,Math.min(a.left+a.width,b.left+b.width)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.top+a.height,b.top+b.height)-Math.max(a.top,b.top));
-   for(let attempt=0;attempt<180;attempt++){
-    candidate.top=top;const all=[...placed,candidate];
-    const tooDense=all.some(a=>all.reduce((sum,b)=>sum+(a===b?0:intersection(a,b)),0)>a.width*a.height*.15);
-    if(!tooDense)break;top+=6;
-   }
-   placed.push({...candidate,top});
-   card.classList.toggle('ribbon',ribbon);card.style.width=width+'px';card.style.left='0px';card.style.top='0px';
-   card.style.transformOrigin='50% 50%';card.style.zIndex=String([2,4,1,5,3][i]);
-   card.dataset.streamIndex=String(spread*5+i);card.dataset.composition=String(spread);
-   entry.speed=speedFor(entry.group);compositions.push({entry,left,top,height,angle,travel:mobile?6:10});
-   end=Math.max(end,top-cursor+height+35);
-  });
-  cursor+=end+(mobile?28:40);
+ if(!field)return;ensureStage();
+ const mobile=innerWidth<=780,staticMode=reduced.matches;
+ field.classList.toggle('is-static',staticMode);bands=[];
+ field.querySelectorAll('[data-copy]').forEach(e=>e.remove());
+ const stickyTop=mobile?155:132;
+ const stageHeight=Math.max(mobile?410:480,innerHeight-stickyTop);
+ galleryStage.style.height=staticMode?'auto':stageHeight+'px';
+ const tileHeight=stageHeight*.315;
+ const speeds=mobile?[.42,.72,1.04]:[.48,.80,1.18];
+ for(let group=1;group<=3;group++){
+  const layer=field.querySelector(`[data-group="${group}"]`);
+  const entries=items.filter(e=>e.group===group).sort((a,b)=>a.ordinal-b.ordinal);
+  const top=stageHeight*([.025,.32,.615][group-1]);
+  let cursor=0;
+  for(const entry of entries){
+   const card=entry.element,ribbon=entry.aspect<.2;
+   let height=tileHeight*(ribbon?1.04:[1,.96,1.03,.98][entry.ordinal%4]);
+   let width=Math.min(height*entry.aspect,entry.sourceWidth||entry.width);
+   height=width/entry.aspect;
+   const y=top+(tileHeight-height)/2+stageHeight*([-.012,.006,.014,-.005][entry.ordinal%4]);
+   const angle=[-.6,.45,-.35,.7,-.45][(entry.ordinal+group)%5];
+   card.classList.toggle('ribbon',ribbon);card.style.width=width+'px';
+   card.style.left='0px';card.style.top='0px';card.style.transformOrigin='50% 50%';
+   card.style.transform=`translate3d(${cursor}px,${y}px,0) rotate(${angle}deg)`;
+   card.style.zIndex=String(group);card.dataset.streamIndex=String(items.indexOf(entry));
+   entry.bandX=cursor;entry.bandY=y;entry.bandAngle=angle;
+   cursor+=width+(mobile?22:32);
+  }
+  const cycle=cursor,repeat=Math.ceil(innerWidth/cycle)+2;
+  if(!staticMode)for(let copy=1;copy<repeat;copy++)for(const entry of entries){
+   const clone=entry.element.cloneNode(true);clone.dataset.copy=String(copy);clone.tabIndex=-1;clone.setAttribute('aria-hidden','true');
+   clone.style.transform=`translate3d(${entry.bandX+cycle*copy}px,${entry.bandY}px,0) rotate(${entry.bandAngle}deg)`;
+   clone.addEventListener('click',()=>openViewer(items.indexOf(entry)));layer.appendChild(clone);
+  }
+  bands.push({layer,cycle,speed:speeds[group-1],phase:cycle*[.02,.24,.46][group-1]});
  }
- field.style.height=reduced.matches?'auto':Math.ceil(cursor+30)+'px';updateScroll();
+ // Enough travel to reveal every source image at least once, with no empty tail.
+ const travel=Math.max(...bands.map(b=>b.cycle/b.speed));
+ field.style.height=staticMode?'auto':Math.ceil(travel+stageHeight)+'px';
+ field.dataset.galleryMode=staticMode?'static':'continuous';
+ updateScroll();
 }
 function updateScroll(){
  raf=0;if(!field||!items.length)return;
- const rect=field.getBoundingClientRect();
- document.querySelector('.archive-progress').style.width=Math.max(0,Math.min(1,(-rect.top+innerHeight*.3)/(field.offsetHeight-innerHeight*.4)))*100+'%';
- for(const layer of field.querySelectorAll('.parallax-layer'))layer.style.transform='none';
- for(const {entry,left,top,height,angle,travel} of compositions){
-  const d=innerHeight*.5-(rect.top+top+height/2);
-  const shift=reduced.matches?0:travel*Math.tanh(d*(1-entry.speed)/travel);
-  entry.element.style.transform=`translate3d(${left}px,${top+shift}px,0) rotate(${angle}deg)`;
+ const rect=field.getBoundingClientRect(),stickyTop=innerWidth<=780?155:132;
+ const distance=Math.max(0,Math.min(field.offsetHeight-galleryStage.offsetHeight,stickyTop-rect.top));
+ const total=Math.max(1,field.offsetHeight-galleryStage.offsetHeight);
+ document.querySelector('.archive-progress').style.width=Math.min(1,distance/total)*100+'%';
+ for(const band of bands){
+  const x=reduced.matches?0:-((distance*band.speed+band.phase)%band.cycle);
+  band.layer.style.transform=`translate3d(${x}px,0,0)`;
  }
 }
 function queueScroll(){if(!raf)raf=requestAnimationFrame(updateScroll);}
@@ -78,10 +84,10 @@ function showImage(index){
 }
 function openViewer(index){showImage(index);scrollLock=document.body.style.overflow;document.body.style.overflow='hidden';viewer.showModal();}
 if(field){
- fetch('./media/gallery.json?v=20261028-editorial').then(r=>{if(!r.ok)throw Error('gallery');return r.json();}).then(data=>{
+ fetch('./media/gallery.json?v=20261029-continuous').then(r=>{if(!r.ok)throw Error('gallery');return r.json();}).then(data=>{
   const counts={1:0,2:0,3:0};items=data.map((entry,index)=>{
    const ordinal=counts[entry.group]++,button=document.createElement('button');button.type='button';button.className='gallery-card';button.setAttribute('aria-label',`展開${groupNames[entry.group]}圖像：${entry.title}`);
-   const image=document.createElement('img');image.src=entry.src;image.alt=entry.title;image.loading='lazy';image.decoding='async';image.width=entry.width;image.height=entry.height;
+   const image=document.createElement('img');image.src=entry.thumb||entry.src;image.alt=entry.title;image.loading='eager';image.fetchPriority='low';image.decoding='sync';image.width=entry.width;image.height=entry.height;
    const caption=document.createElement('figcaption');const title=document.createElement('span');title.textContent=entry.title;const count=document.createElement('span');count.textContent=`0${entry.group} / ${String(ordinal+1).padStart(2,'0')}`;caption.append(title,count);button.append(image,caption);button.addEventListener('click',()=>openViewer(items.findIndex(item=>item.element===button)));field.querySelector(`[data-group="${entry.group}"]`).append(button);return {...entry,ordinal,element:button};
   });items.sort((a,b)=>streamRank.get(`${a.group}:${a.ordinal}`)-streamRank.get(`${b.group}:${b.ordinal}`));layout();window.__atlasGalleryReady=true;
  }).catch(error=>{console.error(error);field.textContent='圖像檔案暫時無法載入，請重新整理。';});

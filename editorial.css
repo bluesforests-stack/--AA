@@ -26,3 +26,19 @@
 @media(max-width:780px){.gallery-card figcaption{font-size:6px}}
 
 .viewer-stage{background:#ffffff}
+
+/* A compact, continuous horizontal atlas, driven by native vertical scrolling. */
+.gallery-field{overflow:visible;isolation:isolate}
+.gallery-field .field-ruler{display:none}
+.gallery-stage{position:sticky;top:132px;width:100%;overflow:hidden;background:#fff;isolation:isolate}
+.gallery-field:not(.is-static) .parallax-layer{display:block;position:absolute;inset:0;will-change:transform;transition:opacity .25s;pointer-events:none}
+.gallery-field:not(.is-static) .parallax-layer[data-group="1"]{z-index:1}
+.gallery-field:not(.is-static) .parallax-layer[data-group="2"]{z-index:2}
+.gallery-field:not(.is-static) .parallax-layer[data-group="3"]{z-index:3}
+.gallery-field .gallery-card{will-change:auto;pointer-events:auto}
+.gallery-motion-hint{position:absolute;z-index:10;bottom:8px;left:4vw;right:4vw;display:flex;justify-content:space-between;pointer-events:none;font:8px/1.5 var(--atlas-mono);letter-spacing:.5px;color:var(--atlas-muted)}
+.gallery-motion-hint span:first-child{font-family:var(--atlas-font)}
+.gallery-field.is-static .gallery-stage{position:relative;top:auto;height:auto!important;overflow:visible}
+.gallery-field.is-static .gallery-motion-hint{display:none}
+.gallery-field.is-static .gallery-card{left:auto!important;top:auto!important;transform:none!important}
+@media(max-width:780px){.gallery-stage{top:155px}.gallery-motion-hint{font-size:6px;left:20px;right:20px;bottom:6px}.gallery-field .gallery-card figcaption{font-size:6px;gap:7px}}
