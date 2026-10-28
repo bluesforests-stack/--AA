@@ -1,0 +1,252 @@
+[
+  {
+    "group": 1,
+    "index": 1,
+    "src": "./media/gallery/g1-01.webp",
+    "title": "空間圖像 01",
+    "width": 2481,
+    "height": 3506,
+    "aspect": 0.7076440387906446,
+    "original": "1号素材/空间1.jpg"
+  },
+  {
+    "group": 1,
+    "index": 2,
+    "src": "./media/gallery/g1-02.webp",
+    "title": "空間圖像 02",
+    "width": 2478,
+    "height": 3506,
+    "aspect": 0.7067883628066173,
+    "original": "1号素材/空间2.jpg"
+  },
+  {
+    "group": 1,
+    "index": 3,
+    "src": "./media/gallery/g1-03.webp",
+    "title": "空間圖像 03",
+    "width": 2487,
+    "height": 3502,
+    "aspect": 0.7101656196459166,
+    "original": "1号素材/空间3.jpg"
+  },
+  {
+    "group": 1,
+    "index": 4,
+    "src": "./media/gallery/g1-04.webp",
+    "title": "空間圖像 04",
+    "width": 2474,
+    "height": 3502,
+    "aspect": 0.7064534551684751,
+    "original": "1号素材/空间4.jpg"
+  },
+  {
+    "group": 1,
+    "index": 5,
+    "src": "./media/gallery/g1-05.webp",
+    "title": "空間圖像 05",
+    "width": 2475,
+    "height": 3516,
+    "aspect": 0.7039249146757679,
+    "original": "1号素材/空间5.jpg"
+  },
+  {
+    "group": 1,
+    "index": 6,
+    "src": "./media/gallery/g1-06.webp",
+    "title": "空間圖像 06",
+    "width": 2485,
+    "height": 3514,
+    "aspect": 0.7071713147410359,
+    "original": "1号素材/空间6.jpg"
+  },
+  {
+    "group": 1,
+    "index": 7,
+    "src": "./media/gallery/g1-07.webp",
+    "title": "空間總覽",
+    "width": 3723,
+    "height": 5185,
+    "aspect": 0.7180327868852459,
+    "original": "1号素材/空间总海报.jpg"
+  },
+  {
+    "group": 2,
+    "index": 1,
+    "src": "./media/gallery/g2-01.webp",
+    "title": "標識拼貼 01",
+    "width": 595,
+    "height": 842,
+    "aspect": 0.7066508313539193,
+    "original": "2号素材/印刷文件-01.jpg"
+  },
+  {
+    "group": 2,
+    "index": 2,
+    "src": "./media/gallery/g2-02.webp",
+    "title": "標識拼貼 02",
+    "width": 595,
+    "height": 842,
+    "aspect": 0.7066508313539193,
+    "original": "2号素材/印刷文件-02.jpg"
+  },
+  {
+    "group": 2,
+    "index": 3,
+    "src": "./media/gallery/g2-03.webp",
+    "title": "標識拼貼 03",
+    "width": 595,
+    "height": 842,
+    "aspect": 0.7066508313539193,
+    "original": "2号素材/印刷文件-03.jpg"
+  },
+  {
+    "group": 2,
+    "index": 4,
+    "src": "./media/gallery/g2-04.webp",
+    "title": "標識拼貼 04",
+    "width": 595,
+    "height": 842,
+    "aspect": 0.7066508313539193,
+    "original": "2号素材/印刷文件-04.jpg"
+  },
+  {
+    "group": 2,
+    "index": 5,
+    "src": "./media/gallery/g2-05.webp",
+    "title": "標識拼貼 05",
+    "width": 595,
+    "height": 842,
+    "aspect": 0.7066508313539193,
+    "original": "2号素材/印刷文件-05.jpg"
+  },
+  {
+    "group": 2,
+    "index": 6,
+    "src": "./media/gallery/g2-06.webp",
+    "title": "標識連續圖 06",
+    "width": 1821,
+    "height": 595,
+    "aspect": 3.060504201680672,
+    "original": "2号素材/印刷文件-06.jpg"
+  },
+  {
+    "group": 2,
+    "index": 7,
+    "src": "./media/gallery/g2-07.webp",
+    "title": "標識連續圖 07",
+    "width": 1821,
+    "height": 595,
+    "aspect": 3.060504201680672,
+    "original": "2号素材/印刷文件-07.jpg"
+  },
+  {
+    "group": 3,
+    "index": 1,
+    "src": "./media/gallery/g3-01.webp",
+    "title": "粵語點餐",
+    "width": 1024,
+    "height": 1536,
+    "aspect": 0.6666666666666666,
+    "original": "3号素材/10.png"
+  },
+  {
+    "group": 3,
+    "index": 2,
+    "src": "./media/gallery/g3-02.webp",
+    "title": "巴士報站",
+    "width": 1024,
+    "height": 1536,
+    "aspect": 0.6666666666666666,
+    "original": "3号素材/11.png"
+  },
+  {
+    "group": 3,
+    "index": 3,
+    "src": "./media/gallery/g3-03.webp",
+    "title": "澳門聲音打孔機",
+    "width": 1086,
+    "height": 1448,
+    "aspect": 0.75,
+    "original": "3号素材/62b3d2359920550b0ae8637f1ab2b1d8.png"
+  },
+  {
+    "group": 3,
+    "index": 4,
+    "src": "./media/gallery/g3-04.webp",
+    "title": "摩托引擎",
+    "width": 1024,
+    "height": 1536,
+    "aspect": 0.6666666666666666,
+    "original": "3号素材/9.png"
+  },
+  {
+    "group": 3,
+    "index": 5,
+    "src": "./media/gallery/g3-05.webp",
+    "title": "澳門聲音索引",
+    "width": 1536,
+    "height": 1024,
+    "aspect": 1.5,
+    "original": "3号素材/Macau_Sonic_Index_mockup.png"
+  },
+  {
+    "group": 3,
+    "index": 6,
+    "src": "./media/gallery/g3-06.webp",
+    "title": "珠海聲音打孔機",
+    "width": 1086,
+    "height": 1448,
+    "aspect": 0.75,
+    "original": "3号素材/df1a1740dd7c52878945edd7d5de6106.png"
+  },
+  {
+    "group": 3,
+    "index": 7,
+    "src": "./media/gallery/g3-07.webp",
+    "title": "聲音年輪",
+    "width": 4961,
+    "height": 3508,
+    "aspect": 1.4141961231470923,
+    "original": "3号素材/声音年轮.png"
+  },
+  {
+    "group": 3,
+    "index": 8,
+    "src": "./media/gallery/g3-08.webp",
+    "title": "澳門聲音紙帶",
+    "width": 1683,
+    "height": 2381,
+    "aspect": 0.7068458630827383,
+    "original": "3号素材/大海报硫酸纸_01.jpg"
+  },
+  {
+    "group": 3,
+    "index": 9,
+    "src": "./media/gallery/g3-09.webp",
+    "title": "珠海聲音紙帶",
+    "width": 1683,
+    "height": 2381,
+    "aspect": 0.7068458630827383,
+    "original": "3号素材/大海报硫酸纸_02.jpg"
+  },
+  {
+    "group": 3,
+    "index": 10,
+    "src": "./media/gallery/g3-10.webp",
+    "title": "澳門打孔記錄",
+    "width": 462,
+    "height": 4098,
+    "aspect": 0.11273792093704246,
+    "original": "3号素材/澳门手摇打孔机_01.jpg"
+  },
+  {
+    "group": 3,
+    "index": 11,
+    "src": "./media/gallery/g3-11.webp",
+    "title": "珠海打孔記錄",
+    "width": 462,
+    "height": 4098,
+    "aspect": 0.11273792093704246,
+    "original": "3号素材/珠海手摇打孔机_01.jpg"
+  }
+]
