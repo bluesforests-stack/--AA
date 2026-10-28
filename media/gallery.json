@@ -237,7 +237,9 @@
     "width": 462,
     "height": 4098,
     "aspect": 0.11273792093704246,
-    "original": "3号素材/澳门手摇打孔机_01.jpg"
+    "original": "3号素材/澳门手摇打孔机_01.jpg",
+    "sourceWidth": 248,
+    "sourceHeight": 2200
   },
   {
     "group": 3,
@@ -247,6 +249,8 @@
     "width": 462,
     "height": 4098,
     "aspect": 0.11273792093704246,
-    "original": "3号素材/珠海手摇打孔机_01.jpg"
+    "original": "3号素材/珠海手摇打孔机_01.jpg",
+    "sourceWidth": 248,
+    "sourceHeight": 2200
   }
 ]
