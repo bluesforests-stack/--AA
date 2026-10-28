@@ -9,40 +9,49 @@ const streamRank=new Map(streamOrder.map(([g,i],rank)=>[`${g}:${i}`,rank]));
 function speedFor(group,mobile){const base=Number(field.querySelector(`[data-group="${group}"]`).dataset.speed);return mobile?1+(base-1)*.65:base;}
 function layout(){
  if(!field)return;
- const mobile=innerWidth<=780;field.classList.toggle('is-static',reduced.matches);
- const pathX=[7,36,63,19,54,5,42,64,23,9,57,32];
- const mobileX=[5,25,10,22,3,27,8,20];
- const angles=[-2.3,1.7,-1.1,2.6,-1.9,.9];
- let beat=0,maxReach=0;
+ const mobile=innerWidth<=780,columns=mobile?2:3;
+ field.classList.toggle('is-static',reduced.matches);
+ // Pack rotated bounds into staggered columns. Reserve the entire parallax
+ // travel above and below every image, so different velocities cannot collide.
+ const margin=innerWidth*(mobile?.055:.055),gutter=innerWidth*(mobile?.055:.045);
+ const columnWidth=(innerWidth-2*margin-gutter*(columns-1))/columns;
+ const travel=mobile?12:24,gap=mobile?24:30;
+ const bottoms=Array.from({length:columns},(_,i)=>70+i*(mobile?55:95));
+ const angles=[-1.6,1.2,-.8,1.8,-1.3,.7];
  for(const [rank,entry] of items.entries()){
-  const card=entry.element,ribbon=entry.aspect<.2,panorama=entry.aspect>2;
+  const card=entry.element,ribbon=entry.aspect<.2;
   card.classList.toggle('ribbon',ribbon);
-  let width=mobile?(ribbon?25:panorama?86:entry.aspect>1.2?78:[67,71,64,69][rank%4]):(ribbon?14:panorama?58:entry.aspect>1.2?36:[27,28,30,26,29][rank%5]);
-  let left=mobile?mobileX[rank%mobileX.length]:pathX[rank%pathX.length];
-  if(panorama)left=mobile?7:rank%2?7:35;
-  if(ribbon)left=entry.ordinal===9?(mobile?8:13):(mobile?65:71);
-  width=Math.min(width,96-left);
-  const angle=ribbon?(entry.ordinal===9?-1.3:1.1):angles[rank%angles.length];
-  const pixels=innerWidth*width/100,imageHeight=pixels/entry.aspect;
-  const speed=speedFor(entry.group,mobile),baseY=beat*speed+[110,145,125,165,135,150][rank%6];
-  card.style.width=width+'vw';card.style.left=left+'vw';card.style.top=baseY+'px';
-  card.style.setProperty('--card-angle',reduced.matches?'0deg':angle+'deg');card.dataset.streamIndex=String(rank);
-  const occupiedHeight=imageHeight+Math.abs(Math.sin(angle*Math.PI/180))*pixels+48;
-  maxReach=Math.max(maxReach,(baseY+occupiedHeight)/speed);
-  const spacing=ribbon?(mobile?230:270):panorama?(mobile?155:190):Math.max(mobile?160:190,Math.min(mobile?255:310,imageHeight*.46));
-  beat+=spacing*[1,.88,1.09,.94][rank%4];
+  const angle=ribbon?(rank%2?.3:-.3):angles[rank%angles.length];
+  const radians=Math.abs(angle)*Math.PI/180;
+  const fraction=ribbon?.88:[.98,.92,1,.95][rank%4];
+  // Solve the rotated bounding width, including a conservative caption height.
+  const width=(columnWidth-48*Math.sin(radians))/(Math.cos(radians)+Math.sin(radians)/entry.aspect)*fraction;
+  const height=width/entry.aspect+48;
+  const boundW=width*Math.cos(radians)+height*Math.sin(radians);
+  const boundH=height*Math.cos(radians)+width*Math.sin(radians);
+  const lane=bottoms.indexOf(Math.min(...bottoms));
+  const boundTop=bottoms[lane]+travel;
+  const left=margin+lane*(columnWidth+gutter)+(columnWidth-width)/2;
+  const top=boundTop+(boundH-height)/2;
+  card.style.width=width+'px';card.style.left=left+'px';card.style.top=top+'px';
+  card.style.setProperty('--card-angle',reduced.matches?'0deg':angle+'deg');
+  card.dataset.streamIndex=String(rank);entry.baseCenter=top+height/2;
+  entry.travel=travel;entry.speed=speedFor(entry.group,mobile);
+  bottoms[lane]=boundTop+boundH+travel+gap;
  }
- field.style.height=reduced.matches?'auto':Math.ceil(maxReach+Math.min(220,innerHeight*.24))+'px';
+ field.style.height=reduced.matches?'auto':Math.ceil(Math.max(...bottoms)+55)+'px';
  updateScroll();
 }
 function updateScroll(){
  raf=0;if(!field||!items.length)return;
- const rect=field.getBoundingClientRect(),distance=Math.max(0,Math.min(field.offsetHeight,-rect.top));
+ const rect=field.getBoundingClientRect();
  const progress=Math.max(0,Math.min(1,(-rect.top+innerHeight*.3)/(field.offsetHeight-innerHeight*.4)));
  document.querySelector('.archive-progress').style.width=progress*100+'%';
- for(const layer of field.querySelectorAll('.parallax-layer')){
-  const speed=speedFor(Number(layer.dataset.group),innerWidth<=780);
-  layer.style.transform=reduced.matches?'none':`translate3d(0,${distance*(1-speed)}px,0)`;
+ for(const layer of field.querySelectorAll('.parallax-layer'))layer.style.transform='none';
+ for(const entry of items){
+  const distance=innerHeight*.5-(rect.top+entry.baseCenter);
+  const shift=reduced.matches?0:Math.max(-entry.travel,Math.min(entry.travel,distance*(1-entry.speed)));
+  entry.element.style.setProperty('--parallax-y',shift+'px');
  }
 }
 function queueScroll(){if(!raf)raf=requestAnimationFrame(updateScroll);}
@@ -77,11 +86,20 @@ if(field){
  document.addEventListener('keydown',e=>{if(!viewer.open)return;if(e.key==='ArrowLeft'){e.preventDefault();showImage(activeIndex-1);}if(e.key==='ArrowRight'){e.preventDefault();showImage(activeIndex+1);}});
 }
 const film=document.querySelector('#atlas-film');
-if(film&&'IntersectionObserver'in window){let manuallyPaused=false,internal=false;
- film.addEventListener('pause',()=>{if(!internal&&film.getBoundingClientRect().top<innerHeight&&film.getBoundingClientRect().bottom>0)manuallyPaused=true;});
- new IntersectionObserver(entries=>{const visible=entries[0].isIntersecting;
-  if(visible&&!reduced.matches&&!manuallyPaused)film.play().catch(()=>{});
-  else if(!visible&&!film.paused){internal=true;film.pause();setTimeout(()=>internal=false,100);}
- },{threshold:.35}).observe(film);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)film.pause();});
+if(film){
+ film.muted=true;film.defaultMuted=true;
+ let manuallyPaused=false,internal=false,visible=false;
+ const play=()=>{if(visible&&!manuallyPaused)film.play().catch(()=>{});};
+ film.addEventListener('pause',()=>{if(!internal&&!document.hidden&&visible)manuallyPaused=true;});
+ film.addEventListener('play',()=>{manuallyPaused=false;});
+ film.addEventListener('loadeddata',play);
+ if('IntersectionObserver'in window)new IntersectionObserver(entries=>{
+  visible=entries[0].isIntersecting;
+  if(visible)play();
+  else if(!film.paused){internal=true;film.pause();setTimeout(()=>internal=false,100);}
+ },{threshold:.15}).observe(film);
+ else{visible=true;play();}
+ document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){internal=true;film.pause();setTimeout(()=>internal=false,100);}else play();
+ });
 }

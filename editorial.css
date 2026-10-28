@@ -5,3 +5,8 @@
 .film-section{background:#ffffff}.film-frame video{background:#ffffff}.film-frame figcaption{background:#ffffff}
 .gallery-field{background:var(--atlas-bg)}.gallery-card{transform:rotate(var(--card-angle,0deg));transform-origin:50% 50%}.gallery-card.ribbon img{width:100%;height:auto;max-height:none;object-fit:initial}.gallery-card.ribbon figcaption{left:calc(100% + 9px);font-size:7px}.gallery-field.is-static .gallery-card{transform:none!important}.gallery-field.is-static .gallery-card.ribbon{width:130px!important}
 @media(max-width:780px){.gallery-card.ribbon img{max-height:none}.gallery-card.ribbon figcaption{font-size:6px}.gallery-field.is-static .gallery-card.ribbon{width:90px!important}}
+
+/* Bounded parallax: the reserved masonry cells keep artworks unobscured. */
+.gallery-card{transform:translateY(var(--parallax-y,0px)) rotate(var(--card-angle,0deg))}
+.gallery-card.ribbon figcaption{position:static;writing-mode:horizontal-tb;margin-top:10px;white-space:normal;font-size:8px}
+@media(max-width:780px){.gallery-card.ribbon figcaption{font-size:6px;margin-top:7px}}
