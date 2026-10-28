@@ -7,7 +7,8 @@
     "width": 2481,
     "height": 3506,
     "aspect": 0.7076440387906446,
-    "original": "1号素材/空间1.jpg"
+    "original": "1号素材/空间1.jpg",
+    "thumb": "./media/preview-g1-01.webp"
   },
   {
     "group": 1,
@@ -17,7 +18,8 @@
     "width": 2478,
     "height": 3506,
     "aspect": 0.7067883628066173,
-    "original": "1号素材/空间2.jpg"
+    "original": "1号素材/空间2.jpg",
+    "thumb": "./media/preview-g1-02.webp"
   },
   {
     "group": 1,
@@ -27,7 +29,8 @@
     "width": 2487,
     "height": 3502,
     "aspect": 0.7101656196459166,
-    "original": "1号素材/空间3.jpg"
+    "original": "1号素材/空间3.jpg",
+    "thumb": "./media/preview-g1-03.webp"
   },
   {
     "group": 1,
@@ -37,7 +40,8 @@
     "width": 2474,
     "height": 3502,
     "aspect": 0.7064534551684751,
-    "original": "1号素材/空间4.jpg"
+    "original": "1号素材/空间4.jpg",
+    "thumb": "./media/preview-g1-04.webp"
   },
   {
     "group": 1,
@@ -47,7 +51,8 @@
     "width": 2475,
     "height": 3516,
     "aspect": 0.7039249146757679,
-    "original": "1号素材/空间5.jpg"
+    "original": "1号素材/空间5.jpg",
+    "thumb": "./media/preview-g1-05.webp"
   },
   {
     "group": 1,
@@ -57,7 +62,8 @@
     "width": 2485,
     "height": 3514,
     "aspect": 0.7071713147410359,
-    "original": "1号素材/空间6.jpg"
+    "original": "1号素材/空间6.jpg",
+    "thumb": "./media/preview-g1-06.webp"
   },
   {
     "group": 1,
@@ -67,7 +73,8 @@
     "width": 3723,
     "height": 5185,
     "aspect": 0.7180327868852459,
-    "original": "1号素材/空间总海报.jpg"
+    "original": "1号素材/空间总海报.jpg",
+    "thumb": "./media/preview-g1-07.webp"
   },
   {
     "group": 2,
@@ -77,7 +84,8 @@
     "width": 595,
     "height": 842,
     "aspect": 0.7066508313539193,
-    "original": "2号素材/印刷文件-01.jpg"
+    "original": "2号素材/印刷文件-01.jpg",
+    "thumb": "./media/preview-g2-01.webp"
   },
   {
     "group": 2,
@@ -87,7 +95,8 @@
     "width": 595,
     "height": 842,
     "aspect": 0.7066508313539193,
-    "original": "2号素材/印刷文件-02.jpg"
+    "original": "2号素材/印刷文件-02.jpg",
+    "thumb": "./media/preview-g2-02.webp"
   },
   {
     "group": 2,
@@ -97,7 +106,8 @@
     "width": 595,
     "height": 842,
     "aspect": 0.7066508313539193,
-    "original": "2号素材/印刷文件-03.jpg"
+    "original": "2号素材/印刷文件-03.jpg",
+    "thumb": "./media/preview-g2-03.webp"
   },
   {
     "group": 2,
@@ -107,7 +117,8 @@
     "width": 595,
     "height": 842,
     "aspect": 0.7066508313539193,
-    "original": "2号素材/印刷文件-04.jpg"
+    "original": "2号素材/印刷文件-04.jpg",
+    "thumb": "./media/preview-g2-04.webp"
   },
   {
     "group": 2,
@@ -117,7 +128,8 @@
     "width": 595,
     "height": 842,
     "aspect": 0.7066508313539193,
-    "original": "2号素材/印刷文件-05.jpg"
+    "original": "2号素材/印刷文件-05.jpg",
+    "thumb": "./media/preview-g2-05.webp"
   },
   {
     "group": 2,
@@ -127,7 +139,8 @@
     "width": 1821,
     "height": 595,
     "aspect": 3.060504201680672,
-    "original": "2号素材/印刷文件-06.jpg"
+    "original": "2号素材/印刷文件-06.jpg",
+    "thumb": "./media/preview-g2-06.webp"
   },
   {
     "group": 2,
@@ -137,7 +150,8 @@
     "width": 1821,
     "height": 595,
     "aspect": 3.060504201680672,
-    "original": "2号素材/印刷文件-07.jpg"
+    "original": "2号素材/印刷文件-07.jpg",
+    "thumb": "./media/preview-g2-07.webp"
   },
   {
     "group": 3,
@@ -147,7 +161,8 @@
     "width": 1024,
     "height": 1536,
     "aspect": 0.6666666666666666,
-    "original": "3号素材/10.png"
+    "original": "3号素材/10.png",
+    "thumb": "./media/preview-g3-01.webp"
   },
   {
     "group": 3,
@@ -157,7 +172,8 @@
     "width": 1024,
     "height": 1536,
     "aspect": 0.6666666666666666,
-    "original": "3号素材/11.png"
+    "original": "3号素材/11.png",
+    "thumb": "./media/preview-g3-02.webp"
   },
   {
     "group": 3,
@@ -167,7 +183,8 @@
     "width": 1086,
     "height": 1448,
     "aspect": 0.75,
-    "original": "3号素材/62b3d2359920550b0ae8637f1ab2b1d8.png"
+    "original": "3号素材/62b3d2359920550b0ae8637f1ab2b1d8.png",
+    "thumb": "./media/preview-g3-03.webp"
   },
   {
     "group": 3,
@@ -177,7 +194,8 @@
     "width": 1024,
     "height": 1536,
     "aspect": 0.6666666666666666,
-    "original": "3号素材/9.png"
+    "original": "3号素材/9.png",
+    "thumb": "./media/preview-g3-04.webp"
   },
   {
     "group": 3,
@@ -187,7 +205,8 @@
     "width": 1536,
     "height": 1024,
     "aspect": 1.5,
-    "original": "3号素材/Macau_Sonic_Index_mockup.png"
+    "original": "3号素材/Macau_Sonic_Index_mockup.png",
+    "thumb": "./media/preview-g3-05.webp"
   },
   {
     "group": 3,
@@ -197,7 +216,8 @@
     "width": 1086,
     "height": 1448,
     "aspect": 0.75,
-    "original": "3号素材/df1a1740dd7c52878945edd7d5de6106.png"
+    "original": "3号素材/df1a1740dd7c52878945edd7d5de6106.png",
+    "thumb": "./media/preview-g3-06.webp"
   },
   {
     "group": 3,
@@ -207,7 +227,8 @@
     "width": 4961,
     "height": 3508,
     "aspect": 1.4141961231470923,
-    "original": "3号素材/声音年轮.png"
+    "original": "3号素材/声音年轮.png",
+    "thumb": "./media/preview-g3-07.webp"
   },
   {
     "group": 3,
@@ -217,7 +238,8 @@
     "width": 1683,
     "height": 2381,
     "aspect": 0.7068458630827383,
-    "original": "3号素材/大海报硫酸纸_01.jpg"
+    "original": "3号素材/大海报硫酸纸_01.jpg",
+    "thumb": "./media/preview-g3-08.webp"
   },
   {
     "group": 3,
@@ -227,7 +249,8 @@
     "width": 1683,
     "height": 2381,
     "aspect": 0.7068458630827383,
-    "original": "3号素材/大海报硫酸纸_02.jpg"
+    "original": "3号素材/大海报硫酸纸_02.jpg",
+    "thumb": "./media/preview-g3-09.webp"
   },
   {
     "group": 3,
@@ -239,7 +262,8 @@
     "aspect": 0.11273792093704246,
     "original": "3号素材/澳门手摇打孔机_01.jpg",
     "sourceWidth": 248,
-    "sourceHeight": 2200
+    "sourceHeight": 2200,
+    "thumb": "./media/preview-g3-10.webp"
   },
   {
     "group": 3,
@@ -251,6 +275,7 @@
     "aspect": 0.11273792093704246,
     "original": "3号素材/珠海手摇打孔机_01.jpg",
     "sourceWidth": 248,
-    "sourceHeight": 2200
+    "sourceHeight": 2200,
+    "thumb": "./media/preview-g3-11.webp"
   }
 ]
