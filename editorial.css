@@ -16,3 +16,11 @@
 .gallery-card.ribbon img{image-rendering:auto}
 .viewer-stage.source-strip.zoomed img{width:var(--source-width);max-width:none;max-height:none;height:auto}
 @media(prefers-reduced-motion:reduce){.gallery-card{will-change:auto}}
+
+/* Magazine spreads share a single stacking context for vertical and diagonal overlaps. */
+.gallery-field:not(.is-static) .parallax-layer{display:contents}
+.gallery-field:not(.is-static) .parallax-layer.muted-layer .gallery-card{opacity:.08;pointer-events:none}
+.gallery-card img{box-shadow:0 3px 12px #2525250a}
+.gallery-card:focus-visible{z-index:90!important}
+.gallery-card figcaption{font-size:8px;letter-spacing:.1px}
+@media(max-width:780px){.gallery-card figcaption{font-size:6px}}
