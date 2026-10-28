@@ -11,7 +11,7 @@
     />
     <title>城市聲音打孔機｜珠海 × 澳門</title>
     <link rel="stylesheet" href="styles.css?v=9" />
-  <link rel="stylesheet" href="../shared/ui.css"><link rel="icon" href="../favicon.svg"></head>
+  <link rel="stylesheet" href="../shared/ui.css"><link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./layout.css?v=20261028-cityrow"></head>
   <body class="atlas-sound"><header class="portal-header"><a class="portal-home" href="../">Hengqin-Macau Sensory Atlas</a><nav class="portal-nav" aria-label="項目導覽"><a href="../visual/"><small>01</small>Visual</a><a href="../space/"><small>02</small>Space</a><a href="../sound/" aria-current="page"><small>03</small>Sound</a></nav><div class="portal-meta"><a href="../#project-intro">關於計劃 ↗</a><span>SENSORY ATLAS</span></div></header>
     <main class="experience" data-city="zhuhai">
       <header class="topbar" aria-label="作品控制列">
@@ -21,6 +21,19 @@
           <h1>城市聲音打孔機</h1>
         </div>
 
+
+
+        <div class="top-actions">
+          <button class="guide-button" id="guide-button" type="button" aria-label="查看新手指南">?</button>
+          <button class="sound-button" type="button" aria-pressed="false" aria-label="開啟或關閉城市聲音">
+            <span class="sound-icon" aria-hidden="true"></span>
+            <span class="sound-copy">SOUND OFF</span>
+          </button>
+          <button class="end-button" id="end-button" type="button" aria-label="完成並生成專屬聲音檔案">
+            <span>OK</span><small>完成</small>
+          </button>
+        </div>
+        <div class="city-controls"><span class="city-controls-label">選擇城市</span>
         <div class="city-switch" role="tablist" aria-label="選擇城市聲音">
           <button
             class="city-button is-active"
@@ -45,16 +58,6 @@
             <span>澳門</span><small>MACAU</small>
           </button>
         </div>
-
-        <div class="top-actions">
-          <button class="guide-button" id="guide-button" type="button" aria-label="查看新手指南">?</button>
-          <button class="sound-button" type="button" aria-pressed="false" aria-label="開啟或關閉城市聲音">
-            <span class="sound-icon" aria-hidden="true"></span>
-            <span class="sound-copy">SOUND OFF</span>
-          </button>
-          <button class="end-button" id="end-button" type="button" aria-label="完成並生成專屬聲音檔案">
-            <span>OK</span><small>完成</small>
-          </button>
         </div>
       </header>
 
