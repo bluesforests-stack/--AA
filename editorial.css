@@ -24,3 +24,5 @@
 .gallery-card:focus-visible{z-index:90!important}
 .gallery-card figcaption{font-size:8px;letter-spacing:.1px}
 @media(max-width:780px){.gallery-card figcaption{font-size:6px}}
+
+.viewer-stage{background:#ffffff}

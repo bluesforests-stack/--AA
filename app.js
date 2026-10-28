@@ -14,7 +14,7 @@ let renderer, camera, controls, city, running=true, tween=null;
 let toastTimer;
 const toast = text => { $('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3200); };
 const scene = new THREE.Scene();
-scene.background=new THREE.Color('#f2f2f2');
+scene.background=new THREE.Color('#ffffff');
 const hotspots=[];
 let modelReady=false,heroInView=true;
 new IntersectionObserver(entries=>{heroInView=entries[0].isIntersecting;},{rootMargin:'100px'}).observe($('#experience'));
@@ -46,9 +46,9 @@ function setup(){
  scene.add(new THREE.HemisphereLight(0xd9e8f1,0x354333,2.8));
  const key=new THREE.DirectionalLight(0xffe8ce,3.7);key.position.set(7,12,8);scene.add(key);
  const fill=new THREE.DirectionalLight(0xa0d6e0,2.1);fill.position.set(-8,6,-5);scene.add(fill);
- const ground=new THREE.Mesh(new THREE.CircleGeometry(8.5,96),new THREE.MeshBasicMaterial({color:0xcacaca,transparent:true,opacity:.10,depthWrite:false}));
+ const ground=new THREE.Mesh(new THREE.CircleGeometry(8.5,96),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false}));
  ground.rotation.x=-Math.PI/2;ground.position.y=-3.1;scene.add(ground);
- const ring=new THREE.Mesh(new THREE.RingGeometry(7.5,7.515,128),new THREE.MeshBasicMaterial({color:0xa6a6a6,transparent:true,opacity:.14,side:THREE.DoubleSide,depthWrite:false}));
+ const ring=new THREE.Mesh(new THREE.RingGeometry(7.5,7.515,128),new THREE.MeshBasicMaterial({color:0xa6a6a6,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
  ring.rotation.x=-Math.PI/2;ring.position.y=-3.08;scene.add(ring);
  const ring2=ring.clone();ring2.scale.setScalar(.93);ring2.material=ring.material.clone();ring2.material.opacity=.11;scene.add(ring2);
  for(const [id,chapter] of Object.entries(chapters)){
