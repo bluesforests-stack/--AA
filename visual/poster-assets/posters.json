@@ -1,0 +1,37 @@
+[
+  {
+    "src": "./poster-assets/poster-01.webp",
+    "title": "印刷文件-01",
+    "index": 1,
+    "width": 595,
+    "height": 842
+  },
+  {
+    "src": "./poster-assets/poster-02.webp",
+    "title": "印刷文件-02",
+    "index": 2,
+    "width": 595,
+    "height": 842
+  },
+  {
+    "src": "./poster-assets/poster-03.webp",
+    "title": "印刷文件-03",
+    "index": 3,
+    "width": 595,
+    "height": 842
+  },
+  {
+    "src": "./poster-assets/poster-04.webp",
+    "title": "印刷文件-04",
+    "index": 4,
+    "width": 595,
+    "height": 842
+  },
+  {
+    "src": "./poster-assets/poster-05.webp",
+    "title": "印刷文件-05",
+    "index": 5,
+    "width": 595,
+    "height": 842
+  }
+]

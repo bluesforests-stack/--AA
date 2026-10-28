@@ -1,0 +1,1 @@
+if(new URLSearchParams(location.search).has('embedded'))document.documentElement.classList.add('embedded');

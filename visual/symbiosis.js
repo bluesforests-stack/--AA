@@ -1,0 +1,1 @@
+(()=>{'use strict';const frame=document.querySelector('#symbiosis-frame'),loading=document.querySelector('#frame-loading');frame.addEventListener('load',()=>{loading.hidden=true;});frame.addEventListener('error',()=>{loading.textContent='暂时无法加载作品，请刷新重试。';});})();
