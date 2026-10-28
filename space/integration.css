@@ -1,0 +1,47 @@
+/* Atlas-native shell for the new city-connection experience. */
+html,body.atlas-space{background:#fff!important;color:var(--atlas-ink);font-family:var(--atlas-font)!important}
+:root{--ink:#252525;--muted:#777;--paper:#fff;--line:#cecece}
+.atlas-space #siteHead{top:72px;min-height:78px;height:78px;padding:12px 4vw;background:#fff;border-bottom:1px solid var(--atlas-line);backdrop-filter:none;gap:20px}
+.atlas-space #siteHead .siteTitle{font:450 22px/1.4 var(--atlas-font);letter-spacing:0;color:var(--atlas-ink)}
+.atlas-space #siteHead .siteEn{font:7px/1.5 var(--atlas-mono);color:var(--atlas-muted);letter-spacing:1px;margin-top:4px}
+.atlas-space #siteNav{gap:0;border:1px solid var(--atlas-line)}
+.atlas-space #siteNav button{border:0;border-left:1px solid var(--atlas-line);border-radius:0;background:#fff;color:var(--atlas-muted);font:400 11px/1.5 var(--atlas-font);padding:10px 20px}
+.atlas-space #siteNav button:first-child{border-left:0}
+.atlas-space #siteNav button.selected{background:var(--atlas-ink);color:#fff}
+.atlas-space #siteNav button:hover{border-color:var(--atlas-line)}
+.atlas-space>canvas:not([aria-hidden]){position:fixed;left:0;top:150px;width:100%;height:calc(100% - 150px)}
+body.atlas-space[data-view=model] .toolbar{top:166px;right:4vw;left:auto}
+.atlas-space #posterView{inset:150px 0 0;background:#fff;color:var(--atlas-ink);padding:45px 5vw 70px}
+.atlas-space #posterView .galleryIntro h2{font:450 32px/1.4 var(--atlas-font);letter-spacing:-.4px}
+.atlas-space #posterView .galleryIntro p{font:8px/1.8 var(--atlas-mono);color:var(--atlas-muted)}
+.atlas-space #posterView figcaption{font:9px/1.8 var(--atlas-font);letter-spacing:.3px;color:var(--atlas-muted);border-top:1px solid var(--atlas-line);padding-top:12px}
+.atlas-space #posterView .posterGrid{gap:35px 28px}
+.atlas-space #posterView figure:hover{transform:none}
+.atlas-space #newsModal,.atlas-space #portModal,.atlas-space #posterLightbox{z-index:100}
+.atlas-space .slideDot{border-radius:0;background:#bbb}.atlas-space .slideDot.active{border-radius:0;background:#fff}
+.atlas-space #posterLightbox{background:#252525e6}
+.atlas-space #posterLightbox button{font:300 32px/1 Arial}
+@media(max-width:780px){
+ .atlas-space #siteHead{top:98px;height:108px;min-height:108px;display:grid;grid-template-columns:1fr;padding:12px 20px;gap:10px;align-content:center}
+ .atlas-space #siteHead .siteTitle{font-size:18px}.atlas-space #siteHead .siteEn{font-size:6px;letter-spacing:.3px}
+ .atlas-space #siteNav{width:max-content}.atlas-space #siteNav button{font-size:10px;padding:8px 18px}
+ .atlas-space>canvas:not([aria-hidden]){top:206px;height:calc(100% - 206px)}
+ body.atlas-space[data-view=model] .toolbar{top:218px;right:15px;left:15px;justify-content:flex-end}
+ .atlas-space #posterView{top:206px;padding:30px 20px 50px}
+ .atlas-space #posterView .galleryIntro h2{font-size:26px}
+ .atlas-space #posterView .posterGrid{display:grid;grid-template-columns:1fr;gap:28px}
+ .atlas-space #posterView figure,.atlas-space #posterView figure.featured{grid-column:1;grid-row:auto}
+ .atlas-space #posterView figure img,.atlas-space #posterView figure.featured img{height:auto;max-height:75svh}
+}
+/* Recompose the supplied poster wall: an intact cover and six readable studies. */
+.atlas-space #posterView .posterGrid{grid-template-columns:1.05fr 1fr 1fr!important;gap:36px 28px!important;align-items:start!important}
+.atlas-space #posterView .posterGrid>figure.featured{grid-column:1!important;grid-row:1 / span 3!important;position:sticky!important;top:0!important;width:100%!important;max-width:100%!important}
+.atlas-space #posterView .posterGrid>figure.featured img{width:100%!important;height:auto!important;max-height:calc(100svh - 245px)!important;object-fit:contain!important}
+.atlas-space #posterView figure.featured:hover .motionStage{transform:none;filter:none}
+.atlas-space #posterView figure:not(.featured) img{height:390px;object-fit:contain}
+@media(max-width:780px){
+ .atlas-space #posterView .posterGrid{grid-template-columns:1fr!important;gap:30px!important}
+ .atlas-space #posterView .posterGrid>figure.featured{grid-column:1!important;grid-row:auto!important;position:relative!important;top:auto!important}
+ .atlas-space #posterView .posterGrid>figure.featured img{height:auto!important;max-height:65svh!important}
+ .atlas-space #posterView figure:not(.featured) img{height:auto;max-height:70svh}
+}
